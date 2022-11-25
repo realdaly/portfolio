@@ -1,30 +1,33 @@
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-
-from .serializers import *
+from django.http import JsonResponse
 from .models import *
 
 
-@api_view(['GET'])
-def apiOverview(request):
-    api_urls = {
-        'Ima put em here later'
-    }
 
-    return Response(api_urls)
+def about(request):
+    data = list(About.objects.values())
+    return JsonResponse(data, safe=False)
 
 
+def edu(request):
+    data = list(Education.objects.values())
+    return JsonResponse(data, safe=False)
 
 
-# Create your views here.
-# def index(request):
-#     context = {
-#         "about": About.objects.last(),
-#         "edu": Education.objects.all(),
-#         "skills": Skill.objects.all(),
-#         "projects": Project.objects.all(),
-#         "contacts": Contact.objects.all(),
-#         "hobbies": Hobby.objects.all()
-#     }
+def skills(request):
+    data = list(Skill.objects.values())
+    return JsonResponse(data, safe=False)
 
-#     return render(request, "api/index.html", context)
+
+def projects(request):
+    data = list(Project.objects.values())
+    return JsonResponse(data, safe=False)
+
+
+def hobbies(request):
+    data = list(Hobby.objects.values())
+    return JsonResponse(data, safe=False)
+
+
+def contacts(request):
+    data = list(Contact.objects.values())
+    return JsonResponse(data, safe=False)
